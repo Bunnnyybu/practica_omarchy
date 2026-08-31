@@ -13,11 +13,9 @@ public class Practicas_omarchy {
 
     public static void main(String[] args) {
 
-        
         Bateria bateria1 = new Bateria("Grande", 80);
         Bateria bateria2 = new Bateria("Mediana", 60);
 
-        
         Motocicleta moto1 = new Motocicleta(
                 "Yamaha",
                 "MT-07",
@@ -26,7 +24,6 @@ public class Practicas_omarchy {
                 bateria1
         );
 
-        
         Automovil auto1 = new Automovil(
                 "Mazda",
                 "CX-5",
@@ -35,14 +32,11 @@ public class Practicas_omarchy {
                 bateria2
         );
 
-        
         Garaje garaje1 = new Garaje();
 
-       
         garaje1.agregarVehiculo(moto1);
         garaje1.agregarVehiculo(auto1);
 
-        
         System.out.println("---- MOTOCICLETA ----");
         moto1.mostrarInformacion();
 
@@ -53,10 +47,30 @@ public class Practicas_omarchy {
 
         System.out.println();
 
-        
         System.out.println(
                 "Valor total de los vehiculos en el garaje: $"
                 + garaje1.calcularValorTotal()
+        );
+
+        System.out.println();
+
+        Cliente cliente1 = new ClienteMayorista("Empresa YIga5");
+        Cliente cliente2 = new ClienteMinorista("Victor");
+
+        double montoCompra = auto1.getPrecio();
+
+        System.out.println("---- DESCUENTOS ----");
+
+        System.out.println(
+                cliente1.getNombre()
+                + " - Descuento: $"
+                + cliente1.calcularDescuento(montoCompra)
+        );
+
+        System.out.println(
+                cliente2.getNombre()
+                + " - Descuento: $"
+                + cliente2.calcularDescuento(montoCompra)
         );
     }
 }
