@@ -3,6 +3,7 @@
  */
 
 package com.univ2026.practicas_omarchy;
+
 import com.univ2026.practicas_omarchy.modelos.*;
 
 /**
@@ -72,5 +73,79 @@ public class Practicas_omarchy {
                 + " - Descuento: $"
                 + cliente2.calcularDescuento(montoCompra)
         );
+
+        System.out.println();
+        System.out.println("---- CATALOGO DE VEHICULOS ----");
+
+        CatalogoVehiculos catalogo = new CatalogoVehiculos();
+
+        System.out.println(
+                "Motocicleta agregada: "
+                + catalogo.agregarVehiculo(moto1)
+        );
+
+        System.out.println(
+                "Automovil agregado: "
+                + catalogo.agregarVehiculo(auto1)
+        );
+
+        System.out.println(
+                "Intento de agregar motocicleta duplicada: "
+                + catalogo.agregarVehiculo(moto1)
+        );
+
+        System.out.println();
+        System.out.println("---- BUSCAR VEHICULO ----");
+
+        Vehiculo vehiculoEncontrado
+                = catalogo.buscarVehiculo("Mazda", "CX-5");
+
+        if (vehiculoEncontrado != null) {
+            vehiculoEncontrado.mostrarInformacion();
+        } else {
+            System.out.println("Vehiculo no encontrado.");
+        }
+
+        System.out.println();
+        System.out.println("---- LISTAR VEHICULOS ----");
+
+        for (Vehiculo vehiculo : catalogo.listarVehiculos()) {
+            vehiculo.mostrarInformacion();
+            System.out.println();
+        }
+
+        System.out.println("---- ACTUALIZAR VEHICULO ----");
+
+        boolean actualizado = catalogo.actualizarVehiculo(
+                "Mazda",
+                "CX-5",
+                "Mazda",
+                "CX-5 Touring",
+                34000.00
+        );
+
+        System.out.println(
+                "Vehiculo actualizado: " + actualizado
+        );
+
+        System.out.println();
+        System.out.println("---- ELIMINAR VEHICULO ----");
+
+        boolean eliminado = catalogo.eliminarVehiculo(
+                "Yamaha",
+                "MT-07"
+        );
+
+        System.out.println(
+                "Vehiculo eliminado: " + eliminado
+        );
+
+        System.out.println();
+        System.out.println("---- CATALOGO FINAL ----");
+
+        for (Vehiculo vehiculo : catalogo.listarVehiculos()) {
+            vehiculo.mostrarInformacion();
+            System.out.println();
+        }
     }
 }

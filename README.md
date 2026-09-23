@@ -1,62 +1,95 @@
-# Sistema de Gestión de Vehículos de una Concesionaria
+# Catálogo de Vehículos - Semanas 5 y 6
 
-## Objetivo
+Proyecto desarrollado en Java para la materia de Programación Estructurada.
 
-Desarrollar un sistema orientado a objetos en Java para representar vehículos de una concesionaria, aplicando encapsulamiento, herencia, composición, clases abstractas y polimorfismo.
+El proyecto implementa un catálogo de vehículos utilizando colecciones y genéricos en Java, junto con una interfaz gráfica desarrollada con JavaFX.
 
-## Tecnologías utilizadas
+## Semana 5 - Colecciones y genéricos
 
-- Java
-- Maven
-- NetBeans
-- Git y GitHub
+Para administrar el catálogo de vehículos se utilizan las siguientes colecciones:
 
-## Arquitectura del proyecto
+- `ArrayList<Vehiculo>`
+- `HashMap<String, Vehiculo>`
+- `HashSet<String>`
 
-### Vehiculo
+El catálogo permite realizar las siguientes operaciones:
 
-Clase base que contiene los atributos comunes `marca`, `modelo` y `precio`.
+- Agregar vehículos.
+- Buscar vehículos.
+- Listar vehículos.
+- Actualizar vehículos.
+- Eliminar vehículos.
+- Evitar registros duplicados.
 
-### Motocicleta
+La clase encargada de estas operaciones es:
 
-Hereda de `Vehiculo` e incorpora la `cilindrada` y un objeto de tipo `Bateria`.
+```text
+CatalogoVehiculos.java
+```
 
-### Automovil
+## Semana 6 - Interfaz gráfica y manejo de eventos
 
-Hereda de `Vehiculo` e incorpora el número de puertas y un objeto de tipo `Bateria`.
+La interfaz gráfica fue desarrollada utilizando JavaFX.
 
-### Bateria
+Desde la interfaz se pueden realizar las operaciones CRUD:
 
-Representa la batería asociada a los vehículos mediante composición.
+- Crear.
+- Consultar.
+- Actualizar.
+- Eliminar.
 
-### Garaje
+También se realizan validaciones para controlar:
 
-Mantiene una lista de objetos `Vehiculo` y permite calcular el valor total de los vehículos almacenados.
+- Campos vacíos.
+- Precios no numéricos.
+- Precios negativos.
+- Vehículos duplicados.
+- Vehículos no encontrados.
 
-### Cliente
+La clase principal de la interfaz gráfica es:
 
-Clase abstracta que contiene el nombre del cliente y declara el método abstracto `calcularDescuento()`.
+```text
+InterfazCatalogo.java
+```
 
-### ClienteMayorista
+Los botones de la interfaz utilizan eventos mediante `setOnAction()` para ejecutar las operaciones correspondientes.
 
-Hereda de `Cliente` y sobrescribe `calcularDescuento()`, aplicando un descuento del 20 %.
+## Requisitos
 
-### ClienteMinorista
+Para ejecutar la aplicación se necesita:
 
-Hereda de `Cliente` y sobrescribe `calcularDescuento()`, aplicando un descuento del 5 %.
+- Java JDK 21.
+- Maven.
+- NetBeans o un IDE compatible con proyectos Maven.
 
-## Conceptos aplicados
+## Instrucciones para ejecutar la aplicación
 
-**Encapsulamiento:** Los atributos se mantienen privados y se accede a ellos mediante métodos públicos.
+1. Descargar o clonar el repositorio.
 
-**Herencia:** `Motocicleta` y `Automovil` heredan de `Vehiculo`. `ClienteMayorista` y `ClienteMinorista` heredan de `Cliente`.
+2. Abrir el proyecto `practicas_omarchy` en NetBeans.
 
-**Composición:** `Motocicleta` y `Automovil` contienen objetos de tipo `Bateria`.
+3. Esperar a que Maven descargue las dependencias configuradas en el archivo `pom.xml`.
 
-**Clase abstracta:** `Cliente` establece una estructura común y declara `calcularDescuento()` como método abstracto.
+4. Ejecutar la aplicación JavaFX utilizando el siguiente comando:
 
-**Polimorfismo:** Los objetos `ClienteMayorista` y `ClienteMinorista` pueden tratarse mediante referencias de tipo `Cliente` y ejecutar diferentes implementaciones de `calcularDescuento()`.
+```bash
+mvn javafx:run
+```
 
-## Ejecución
+También puede ejecutarse desde NetBeans utilizando una acción Maven con el siguiente objetivo:
 
-El programa crea una motocicleta y un automóvil, los agrega al garaje, muestra sus datos, calcula el valor total de los vehículos y demuestra el cálculo de descuentos para clientes mayoristas y minoristas.
+```text
+javafx:run
+```
+
+5. Al ejecutar la aplicación se abrirá la ventana:
+
+```text
+Concesionaria - Catalogo de Vehiculos
+```
+
+Desde esta ventana se pueden crear, consultar, actualizar y eliminar vehículos del catálogo.
+
+## Autor
+
+Víctor Cervantes
